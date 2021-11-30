@@ -1,0 +1,16 @@
+package com.journeyOS.J007engine.hidl@1.0;
+
+import IJ007EngineCallback;
+
+interface IJ007Engine {
+    registerCallback(IJ007EngineCallback callback);
+    unregisterCallback(IJ007EngineCallback callback);
+    notifySceneChanged(int32_t factors, string status, string packageName) generates (bool result);
+    getConfig(TCode code) generates (string result);
+    setConfig(TCode code, string val) generates (bool result);
+    read(string file) generates (string result);
+    write(string file, string val) generates (bool result);
+    readProperty(string key, string defaultVal) generates (string result);
+    writeProperty(string key, string val) generates (bool result);
+    getPackageName(int32_t pid) generates (string result);    
+};

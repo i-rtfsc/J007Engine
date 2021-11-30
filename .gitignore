@@ -1,0 +1,74 @@
+# Project files and paths.
+.classpath
+.project
+
+*.iml
+**/*.iml
+
+.settings/
+**/.settings/
+**/**/.settings/
+
+bin/
+**/bin/
+**/**/bin/
+
+gen/
+**/gen/
+**/**/gen/
+
+system_libs/
+**/system_libs/
+**/**/system_libs/
+
+.idea/
+**/.idea/
+**/**/.idea/
+#gradle/
+#gradlew.bat
+#gradlew
+
+# ignore gradle build paths.
+.gradle/
+**/.gradle/
+**/**/.gradle/
+
+build/
+**/build/
+**/**/build/
+
+*.jks/
+**/*.jks/
+**/**/*.jks/
+
+keystore.properties
+**/keystore.properties
+**/**/keystore.properties
+
+build/
+**/build/
+**/**/build/
+
+*.cxx/
+**/*.cxx/
+**/**/*.cxx/
+
+local.properties
+**/local.properties
+**/**/local.properties
+
+# ignore OS X metadata
+.DS_Store
+**/.DS_Store
+**/**/.DS_Store
+
+# ._.DS_Store
+# **/._.DS_Store
+# **/**/._.DS_Store
+._*
+**/._*
+**/**/._*
+
+/.svn/
+**/.svn/
+**/**/.svn/

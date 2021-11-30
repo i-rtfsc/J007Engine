@@ -1,0 +1,4 @@
+hidl_package_root {
+    name: "com.journeyOS.J007engine",
+    path: "vendor/journeyOS/proprietary/J007Engine/interfaces",
+}

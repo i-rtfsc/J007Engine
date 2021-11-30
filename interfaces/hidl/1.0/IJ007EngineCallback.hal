@@ -1,0 +1,5 @@
+package com.journeyOS.J007engine.hidl@1.0;
+
+interface IJ007EngineCallback {
+    oneway onResponse(J007EngineResponse response);
+};

@@ -1,0 +1,15 @@
+filegroup {
+    name: "J007_engine_framework_aidl",
+    srcs: [
+        "base/core/java/com/journeyOS/J007engine/IJ007EngineInterface.aidl",
+        "base/core/java/com/journeyOS/J007engine/IJ007EngineListener.aidl",
+    ],
+    path: "base/core/java",
+}
+
+filegroup {
+    name: "J007_engine_framework_base_java",
+    srcs: [
+        "base/core/java/com/journeyOS/J007engine/J007EngineManager.java",
+    ],
+}

@@ -1,0 +1,11 @@
+<?xml version="2.0" encoding="UTF-8"?>
+<compatibility-matrix version="2.0" type="framework">
+    <hal format="hidl" optional="true">
+        <name>com.journeyOS.J007engine.hidl</name>
+        <version>1.0</version>
+        <interface>
+            <name>IJ007Engine</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+</compatibility-matrix>

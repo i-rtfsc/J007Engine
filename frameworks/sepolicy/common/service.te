@@ -1,0 +1,2 @@
+# for J007engine
+type J007engine_service, system_api_service, service_manager_type;

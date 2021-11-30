@@ -1,0 +1,2 @@
+# for J007engine
+allow untrusted_app_all J007engine_service:service_manager { find };

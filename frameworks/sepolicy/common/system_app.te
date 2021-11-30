@@ -1,0 +1,2 @@
+#for J007engine_service
+allow system_app J007engine_service:service_manager { add find };

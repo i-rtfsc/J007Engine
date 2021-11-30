@@ -1,0 +1,11 @@
+<manifest version="1.0" type="device">
+    <hal format="hidl">
+        <name>com.journeyOS.J007engine.hidl</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IJ007Engine</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+</manifest>

@@ -1,0 +1,3 @@
+#for J007engine
+allow system_app hal_J007engine_hwservice:hwservice_manager { find };
+allow system_app hal_J007engine_default:binder call;

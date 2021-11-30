@@ -1,0 +1,51 @@
+type hal_J007engine_default, domain;
+hal_server_domain(hal_J007engine_default, hal_J007engine)
+
+type hal_J007engine_default_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(hal_J007engine_default)
+
+# HwBinder IPC from client to server, and callbacks
+# Allow hwbinder call from hal client to server
+
+#app <---> hw service
+binder_call(hal_J007engine, system_app)
+binder_call(hal_J007engine, platform_app)
+
+binder_call(hal_J007engine, system_server)
+binder_call(hal_J007engine_default, system_server)
+
+#app <---> hw client <---> hw service
+binder_call(hal_J007engine_default, system_app)
+binder_call(hal_J007engine_default, platform_app)
+
+#binder_call(hal_J007engine, hal_perf_default)
+binder_call(hal_J007engine, hwservicemanager)
+binder_call(hal_J007engine_client, hal_J007engine_server)
+binder_call(hal_J007engine_server, hal_J007engine_client)
+
+# Add hwservice related rules
+add_hwservice(hal_J007engine_server, hal_J007engine_hwservice)
+allow hal_J007engine_client hal_J007engine_hwservice:hwservice_manager find;
+
+# https://stackoverflow.com/questions/61801956/avc-denied-default-android-hwservice-violet-neverallow
+#allow hal_J007engine_default default_android_hwservice:hwservice_manager { add }
+
+allow hal_J007engine_default hal_J007engine_hwservice:hwservice_manager { add };
+allow hal_J007engine_default system_server:binder { call };
+
+allow hal_J007engine_default sysfs:file { setattr };
+
+allow hal_J007engine_default proc:file { open read write };
+
+allow hal_J007engine_default init:unix_stream_socket connectto;
+allow hal_J007engine_default property_socket:sock_file write;
+
+# allow read write system prop
+#allow hal_J007engine_default system_prop:file {read write};
+get_prop(system_app, system_prop);
+set_prop(system_app, system_prop);
+
+# access to /proc/pid of other apps
+r_dir_file(hal_J007engine_default, appdomain);
+dontaudit hal_J007engine domain:dir r_dir_perms;
+allow hal_J007engine_default self:capability {sys_resource sys_nice kill};

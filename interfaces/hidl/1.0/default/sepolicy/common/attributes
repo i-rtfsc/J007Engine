@@ -1,0 +1,6 @@
+attribute hal_J007engine;
+expandattribute hal_J007engine true;
+attribute hal_J007engine_client;
+expandattribute hal_J007engine_client true;
+attribute hal_J007engine_server;
+expandattribute hal_J007engine_server false;

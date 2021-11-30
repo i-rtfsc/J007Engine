@@ -1,0 +1,21 @@
+package com.journeyOS.J007engine.hidl@1.0;
+
+enum TCode : int32_t {
+    SET_XXX,
+    GET_XXX,
+    SET_YYY,
+    GET_YYY,
+};
+
+enum Status : int32_t {
+    ERROR,
+    SUCCESS,
+    UNKNOWN,
+};
+
+struct J007EngineResponse {
+    Status status;
+    TCode code;
+    int32_t result;
+    string messages;
+};

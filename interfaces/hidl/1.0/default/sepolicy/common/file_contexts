@@ -1,0 +1,2 @@
+# for J007engine
+/(vendor|system/vendor)/bin/hw/com\.journeyOS\.J007engine\.hidl@1\.0-service          u:object_r:hal_J007engine_default_exec:s0

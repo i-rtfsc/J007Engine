@@ -1,0 +1,4 @@
+#for J007engine
+allow system_server hal_J007engine_hwservice:hwservice_manager find;
+allow system_server hal_J007engine_default:binder call;
+allow system_server hal_J007engine_default:binder transfer;
