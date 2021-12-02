@@ -564,7 +564,9 @@ EOF
     if [ -n "$CHKPERM" ]; then
         adb shell rm $CHKPERM
     fi
-
+    if $stop_n_start; then
+        adb shell start
+    fi
     #delete file if need
     if [ -n "$JOS_BUILD_LOG_SUFFIX_FOR_USER" ]; then
         #echo "usr need log file, don't need delete"
