@@ -25,13 +25,7 @@ public class JniJ007Engine {
         System.loadLibrary("J007_engine_jni");
     }
 
-    public static native String nativeFileRead(String fileName, int size);
+    public static native String buildVersionName();
 
-    public static native int nativeFileWrite(String fileName, String text, int size);
-
-    public static native String nativeGetFps();
-
-    public static native String nativeGetPackageName(int pid);
-
-    public static native int nativeGetBrightness();
+    public static native int buildVersionCode();
 }

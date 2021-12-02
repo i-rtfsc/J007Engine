@@ -14,27 +14,18 @@
  * limitations under the License.
  */
 
-#ifndef _JNIHELPER_H
-#define _JNIHELPER_H
+#ifndef _JNI_HELPER_H
+#define _JNI_HELPER_H
 
 static const char *native_library_class_path_name = "com/journeyOS/J007engine/jni/JniJ007Engine";
 
-jstring jni_native_library_read(JNIEnv *env, jclass thiz, jstring jFileName, jint size);
+jstring jni_native_library_get_version_name(JNIEnv *env, jclass thiz);
 
-jint jni_native_library_writer(JNIEnv *env, jclass thiz, jstring jFileName, jstring jContent, jint size);
-
-jstring jni_native_library_get_fps(JNIEnv *env, jclass thiz);
-
-jstring jni_native_library_get_package_name(JNIEnv *env, jclass thiz, jint pid);
-
-jint jni_native_library_get_brightness(JNIEnv *env, jclass thiz);
+jint jni_native_library_get_version_code(JNIEnv *env, jclass thiz);
 
 static JNINativeMethod native_library_methods[] = {
-        {"nativeFileRead",       "(Ljava/lang/String;I)Ljava/lang/String;",  (void *) jni_native_library_read},
-        {"nativeFileWrite",      "(Ljava/lang/String;Ljava/lang/String;I)I", (void *) jni_native_library_writer},
-        {"nativeGetFps",         "()Ljava/lang/String;",                     (void *) jni_native_library_get_fps},
-        {"nativeGetPackageName", "(I)Ljava/lang/String;",                    (void *) jni_native_library_get_package_name},
-        {"nativeGetBrightness",  "()I",                                      (void *) jni_native_library_get_brightness},
+        {"buildVersionName", "()Ljava/lang/String;", (void *) jni_native_library_get_version_name},
+        {"buildVersionCode", "()I",                  (void *) jni_native_library_get_version_code},
 };
 
-#endif //_JNIHELPER_H
+#endif //_JNI_HELPER_H

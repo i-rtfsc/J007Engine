@@ -69,7 +69,9 @@ public class AccessibilityMonitor extends Monitor implements ActivityListener {
 
     @Override
     public void activityResumed(String packageName, String activity) {
-        SmartLog.d(TAG, "on activity lister, packageName = [" + packageName + "], activity = [" + activity + "]");
+        if (SmartLog.isDebug()) {
+            SmartLog.d(TAG, "on activity lister, packageName = [" + packageName + "], activity = [" + activity + "]");
+        }
 
         NotifyManager.getDefault().setPackageName(packageName);
         if (!packageName.equals(sPackageName)) {

@@ -21,9 +21,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
 import android.os.ServiceManager;
-import android.util.Log;
 
 import com.journeyOS.J007engine.utils.Constant;
+import com.journeyOS.J007engine.utils.SmartLog;
 
 
 /**
@@ -35,7 +35,7 @@ public class BootReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        Log.d(TAG, "BootReceiver received!");
+        SmartLog.d(TAG, "BootReceiver received!");
         if (Intent.ACTION_BOOT_COMPLETED.equals(intent.getAction())) {
             IBinder binder = ServiceManager.getService(Constant.J007_ENGINE_SERVICE_NAME);
             if (binder == null) {

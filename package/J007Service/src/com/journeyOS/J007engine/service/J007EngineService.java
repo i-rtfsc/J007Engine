@@ -21,9 +21,11 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.os.ServiceManager;
 import android.os.SystemClock;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
+import com.journeyOS.J007engine.accessibility.AccessibilityManager;
 import com.journeyOS.J007engine.help.DumpManager;
 import com.journeyOS.J007engine.utils.Constant;
 import com.journeyOS.J007engine.utils.SmartLog;
@@ -45,6 +47,11 @@ public class J007EngineService extends Service {
         super.onCreate();
         mIBinder = new J007EngineServiceImpl();
         onSystemReady();
+        boolean isServiceEnabled = AccessibilityManager.getDefault().isServiceEnabled();
+        SmartLog.d(TAG, "is accessibility service enabled = [" + isServiceEnabled + "]");
+        if (!isServiceEnabled) {
+            AccessibilityManager.getDefault().autoEnableAccessibilityService();
+        }
     }
 
     @Override

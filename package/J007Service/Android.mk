@@ -7,6 +7,16 @@ LOCAL_PREBUILT_STATIC_JAVA_LIBRARIES := \
 include $(BUILD_MULTI_PREBUILT)
 #################################add prebuilt lib#################################
 
+#################################add build info to BuildConfig#################################
+# include $(LOCAL_PATH)/../../version.mk
+# LOCAL_BUILDCONFIG_CLASS := src/com/journeyOS/J007engine/BuildConfig.java
+# BC_OUT_DIR := $(LOCAL_PATH)
+# BC_APPLICATION_ID := "com.journeyOS.J007engine"
+# BC_VERSION_CODE := $(build_version_code)
+# BC_VERSION_NAME := "$(build_version_name)"
+# include $(LOCAL_PATH)/buildconfig.mk
+#################################add build info to BuildConfig#################################
+
 include $(CLEAR_VARS)
 LOCAL_RESOURCE_DIR := \
     $(LOCAL_PATH)/res
@@ -28,7 +38,7 @@ LOCAL_STATIC_JAVA_LIBRARIES := \
 LOCAL_PACKAGE_NAME := J007Service
 LOCAL_CERTIFICATE := platform
 LOCAL_MODULE_TAGS := optional
-#LOCAL_JNI_SHARED_LIBRARIES := J007_engine_jni
+LOCAL_JNI_SHARED_LIBRARIES := J007_engine_jni
 LOCAL_PROGUARD_FLAG_FILES := proguard.flags
 LOCAL_USE_AAPT2 := true
 LOCAL_PRIVILEGED_MODULE := true
@@ -84,4 +94,4 @@ $(LOCAL_BUILT_MODULE): $(j007_engine_hidl_deps)
 	$(hide) touch $@
 #################################gen J007engine.jar#################################
 
-#include $(call all-makefiles-under,$(LOCAL_PATH))
+include $(call all-makefiles-under,$(LOCAL_PATH))

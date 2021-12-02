@@ -58,8 +58,10 @@ public class AccessibilityService extends android.accessibilityservice.Accessibi
     @Override
     public void onAccessibilityEvent(final AccessibilityEvent event) {
         instance = this;
-        if (!containsAllEventTypes && !eventTypes.contains(event.getEventType()))
+        if (!containsAllEventTypes && !eventTypes.contains(event.getEventType())) {
             return;
+        }
+
         int type = event.getEventType();
         if (type == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED ||
                 type == AccessibilityEvent.TYPE_VIEW_FOCUSED) {
@@ -72,10 +74,12 @@ public class AccessibilityService extends android.accessibilityservice.Accessibi
         for (Map.Entry<Integer, AccessibilityDelegate> entry : mDelegates.entrySet()) {
             AccessibilityDelegate delegate = entry.getValue();
             Set<Integer> types = delegate.getEventTypes();
-            if (types != null && !delegate.getEventTypes().contains(event.getEventType()))
+            if (types != null && !delegate.getEventTypes().contains(event.getEventType())) {
                 continue;
-            if (delegate.onAccessibilityEvent(AccessibilityService.this, event))
+            }
+            if (delegate.onAccessibilityEvent(AccessibilityService.this, event)) {
                 break;
+            }
         }
     }
 
@@ -103,7 +107,6 @@ public class AccessibilityService extends android.accessibilityservice.Accessibi
 
     @Override
     protected void onServiceConnected() {
-        SmartLog.v(TAG, "onServiceConnected: " + getServiceInfo().toString());
         instance = this;
         super.onServiceConnected();
         LOCK.lock();

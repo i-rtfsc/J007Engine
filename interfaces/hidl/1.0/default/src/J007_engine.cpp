@@ -124,30 +124,29 @@ void J007Engine::onResponse(TCode code, string messages) {
 
 Return<bool> J007Engine::notifySceneChanged(const int32_t factors, const hidl_string &status, const hidl_string &packageName) {
     if (DEBUG) {
-        ALOGI("notify scene changed, factors = %d , status = %s , $packageName = %s\n", factors, status.c_str(), packageName.c_str());
+        ALOGI("notify scene changed, factors = %d , status = %s , packageName = %s\n", factors, status.c_str(), packageName.c_str());
     }
     mStatus = status.c_str();
     mPackageName = packageName.c_str();
     switch (factors) {
         case SCENE_FACTOR_APP:
-            ALOGI("SCENE_FACTOR_APP");
+            ALOGI("on activity changed...");
             break;
         case SCENE_FACTOR_LCD:
-            ALOGI("SCENE_FACTOR_LCD");
+            //TODO
             break;
         case SCENE_FACTOR_BRIGHTNESS:
-            ALOGI("SCENE_FACTOR_BRIGHTNESS");
-            ALOGI("SCENE_FACTOR_BRIGHTNESS  = %d ", SCENE_FACTOR_BRIGHTNESS);
+            //TODO
+            ALOGI("brightness  = %d ", SCENE_FACTOR_BRIGHTNESS);
             break;
         case SCENE_FACTOR_NET:
-            ALOGI("SCENE_FACTOR_NET");
+            //TODO
             break;
         case SCENE_FACTOR_HEADSET:
-            ALOGI("SCENE_FACTOR_HEADSET");
+            //TODO
             break;
         case SCENE_FACTOR_BATTERY:
-            ALOGI("SCENE_FACTOR_BATTERY");
-            ALOGI("SCENE_FACTOR_BATTERY  = %d ", SCENE_FACTOR_BATTERY);
+            //TODO
             JsonObject oJson(mStatus);
             oJson["battery"].Get("temperature", mBatteryTemperature);
             ALOGI("battery temperature  = %d ", mBatteryTemperature);

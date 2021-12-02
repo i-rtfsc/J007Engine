@@ -20,10 +20,7 @@ import android.app.Application;
 
 import com.journeyOS.J007engine.core.J007Core;
 
-/**
- * @author solo
- * J007 Application
- */
+
 public class J007EngineApplication extends Application {
     @Override
     public void onCreate() {

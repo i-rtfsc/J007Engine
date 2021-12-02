@@ -18,8 +18,6 @@ LOCAL_USE_AAPT2 := true
 LOCAL_PRIVATE_PLATFORM_APIS := true
 #LOCAL_MODULE_TAGS := tests
 
-include $(LOCAL_PATH)/version.mk
-
 include $(BUILD_PACKAGE)
 
 #################################gen framework.jar#################################

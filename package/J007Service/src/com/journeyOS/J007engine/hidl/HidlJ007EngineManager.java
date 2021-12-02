@@ -79,7 +79,9 @@ public class HidlJ007EngineManager extends IJ007EngineCallback.Stub {
         } catch (RemoteException e) {
             e.printStackTrace();
         }
-        SmartLog.d(TAG, " force = [" + force + "], service = [" + mService + "]");
+        if (SmartLog.isDebug()) {
+            SmartLog.d(TAG, " force = [" + force + "], service = [" + mService + "]");
+        }
         return mService;
     }
 
@@ -116,7 +118,9 @@ public class HidlJ007EngineManager extends IJ007EngineCallback.Stub {
     }
 
     public void notifySceneChanged(long factors, String state, String packageName) {
-        SmartLog.d(TAG, " factors = [" + factors + "], state = [" + state + "], packageName = [" + packageName + "]");
+        if (SmartLog.isDebug()) {
+            SmartLog.d(TAG, " factors = [" + factors + "], state = [" + state + "], packageName = [" + packageName + "]");
+        }
         IJ007Engine service = getServiceImpl(false);
         if (service != null) {
             try {

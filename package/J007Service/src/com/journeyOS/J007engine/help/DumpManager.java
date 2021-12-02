@@ -50,6 +50,7 @@ public class DumpManager {
     }
 
     private static void dumpHelp(PrintWriter writer) {
+        writer.println("---------------------------------------------------------------");
         writer.println("  help");
         writer.println("      Print this help text.");
         writer.println("      adb shell dumpsys activity service com.journeyOS.J007engine/com.journeyOS.J007engine.service.J007EngineService arg0 arg1 ...");
