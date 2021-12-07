@@ -61,7 +61,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE := J007ServiceFrameworkStudio
 LOCAL_MODULE_CLASS := FAKE
 LOCAL_MODULE_SUFFIX := -timestamp
-j007_engine_system_deps := $(call java-lib-deps, framework)
+j007_engine_system_deps := $(call java-lib-deps,framework)
 j007_engine_system_libs_path := $(abspath $(LOCAL_PATH))/system_libs
 
 include $(BUILD_SYSTEM)/base_rules.mk
@@ -80,7 +80,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE := J007ServiceHidlStudio
 LOCAL_MODULE_CLASS := FAKE
 LOCAL_MODULE_SUFFIX := -timestamp
-j007_engine_hidl_deps := $(call java-lib-deps, com.journeyOS.J007engine.hidl-V1.0-java)
+j007_engine_hidl_deps := $(call java-lib-deps,com.journeyOS.J007engine.hidl-V1.0-java)
 j007_engine_hidl_libs_path := $(abspath $(LOCAL_PATH))/system_libs
 
 include $(BUILD_SYSTEM)/base_rules.mk

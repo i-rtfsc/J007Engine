@@ -31,8 +31,6 @@ import com.journeyOS.J007engine.utils.SmartLog;
 public class J007EngineServiceImpl extends IJ007EngineInterface.Stub {
     private static final String TAG = J007EngineServiceImpl.class.getSimpleName();
 
-    //private final RemoteCallbackList<IJ007EngineCallBack> mClients = new RemoteCallbackList<>();
-
     public J007EngineServiceImpl() {
     }
 

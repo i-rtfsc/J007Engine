@@ -26,7 +26,6 @@ using android::hardware::joinRpcThreadpool;
 
 // Generated HIDL files
 using ::com::journeyOS::J007engine::hidl::V1_0::IJ007Engine;
-using ::com::journeyOS::J007engine::hidl::V1_0::implementation::J007Engine;
 
 using ::android::status_t;
 using ::android::OK;

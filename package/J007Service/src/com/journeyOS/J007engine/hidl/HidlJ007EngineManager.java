@@ -82,6 +82,19 @@ public class HidlJ007EngineManager extends IJ007EngineCallback.Stub {
         if (SmartLog.isDebug()) {
             SmartLog.d(TAG, " force = [" + force + "], service = [" + mService + "]");
         }
+        if (mService != null) {
+            try {
+                mService.linkToDeath(new DeathRecipient() {
+                    @Override
+                    public void serviceDied(long l) {
+                        mService = null;
+                        hasRegister = false;
+                    }
+                }, 0);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
         return mService;
     }
 
@@ -124,6 +137,8 @@ public class HidlJ007EngineManager extends IJ007EngineCallback.Stub {
         IJ007Engine service = getServiceImpl(false);
         if (service != null) {
             try {
+                //if J007Engine death, try to register if needed
+                register();
                 service.notifySceneChanged((int) factors, state, packageName);
             } catch (RemoteException e) {
                 e.printStackTrace();

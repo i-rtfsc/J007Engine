@@ -416,7 +416,7 @@ function josbuild_005_make_android_studio()
     fi
 
     echo $selection
-    _josbuild_004_make_android_studio_$selection
+    _josbuild_005_make_android_studio_$selection
 }
 
 function _josbuild_005_make_android_studio_J007ServiceFrameworkStudio()

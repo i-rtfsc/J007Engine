@@ -19,14 +19,9 @@
 #include "log.h"
 #include "utils.h"
 #include "factors.h"
-#include "json_object.h"
+#include "json/json_object.h"
+#include "global_scene.h"
 
-namespace com {
-namespace journeyOS {
-namespace J007engine {
-namespace hidl {
-namespace V1_0 {
-namespace implementation {
 
 J007Engine *J007Engine::sInstance = NULL;
 
@@ -57,7 +52,7 @@ Return<void> J007Engine::registerCallback(const sp <IJ007EngineCallback> &callba
     }
 
     {
-        std::lock_guard<decltype(mCallbacksLock)> lock(mCallbacksLock);
+        lock_guard<decltype(mCallbacksLock)> lock(mCallbacksLock);
         mCallbacks.push_back(callback);
         // unlock
     }
@@ -85,7 +80,7 @@ bool J007Engine::unregisterCallbackInternal(const sp <IBase> &callback) {
     if (callback == nullptr) return false;
 
     bool removed = false;
-    std::lock_guard<decltype(mCallbacksLock)> lock(mCallbacksLock);
+    lock_guard<decltype(mCallbacksLock)> lock(mCallbacksLock);
     for (auto it = mCallbacks.begin(); it != mCallbacks.end();) {
         if (interfacesEqual(*it, callback)) {
             it = mCallbacks.erase(it);
@@ -111,7 +106,7 @@ void J007Engine::onResponse(TCode code, string messages) {
     response.code = code;
     response.messages = messages;
 
-    std::lock_guard<decltype(mCallbacksLock)> lock(mCallbacksLock);
+    lock_guard<decltype(mCallbacksLock)> lock(mCallbacksLock);
     for (auto it = mCallbacks.begin(); it != mCallbacks.end();) {
         auto ret = (*it)->onResponse(response);
         if (!ret.isOk() && ret.isDeadObject()) {
@@ -122,36 +117,15 @@ void J007Engine::onResponse(TCode code, string messages) {
     }
 }
 
-Return<bool> J007Engine::notifySceneChanged(const int32_t factors, const hidl_string &status, const hidl_string &packageName) {
+Return<bool>
+J007Engine::notifySceneChanged(const int32_t factors, const hidl_string &status, const hidl_string &packageName) {
     if (DEBUG) {
-        ALOGI("notify scene changed, factors = %d , status = %s , packageName = %s\n", factors, status.c_str(), packageName.c_str());
+        ALOGI("notify scene changed, factors = %d , status = %s , packageName = %s\n", factors, status.c_str(),
+              packageName.c_str());
     }
-    mStatus = status.c_str();
-    mPackageName = packageName.c_str();
-    switch (factors) {
-        case SCENE_FACTOR_APP:
-            ALOGI("on activity changed...");
-            break;
-        case SCENE_FACTOR_LCD:
-            //TODO
-            break;
-        case SCENE_FACTOR_BRIGHTNESS:
-            //TODO
-            ALOGI("brightness  = %d ", SCENE_FACTOR_BRIGHTNESS);
-            break;
-        case SCENE_FACTOR_NET:
-            //TODO
-            break;
-        case SCENE_FACTOR_HEADSET:
-            //TODO
-            break;
-        case SCENE_FACTOR_BATTERY:
-            //TODO
-            JsonObject oJson(mStatus);
-            oJson["battery"].Get("temperature", mBatteryTemperature);
-            ALOGI("battery temperature  = %d ", mBatteryTemperature);
-            break;
-    }
+    GlobalScene::getInstance()->updateScene(factors, status.c_str(), packageName.c_str());
+    //TODO
+
     return true;
 }
 
@@ -231,10 +205,3 @@ J007Engine::getPackageName(const int32_t pid, IJ007Engine::getPackageName_cb _hi
 
     return Return<void>();
 }
-
-}//implementation
-}//V1_0
-}//hal
-}//journeyOS
-}//J007engine
-}//com

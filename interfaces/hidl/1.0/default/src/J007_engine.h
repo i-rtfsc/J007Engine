@@ -29,14 +29,8 @@
 #include <com/journeyOS/J007engine/hidl/1.0/IJ007Engine.h>
 #include <com/journeyOS/J007engine/hidl/1.0/types.h>
 
-namespace com {
-namespace journeyOS {
-namespace J007engine {
-namespace hidl {
-namespace V1_0 {
-namespace implementation {
-
 using ::com::journeyOS::J007engine::hidl::V1_0::IJ007Engine;
+using ::com::journeyOS::J007engine::hidl::V1_0::IJ007EngineCallback;
 using ::com::journeyOS::J007engine::hidl::V1_0::Status;
 using ::com::journeyOS::J007engine::hidl::V1_0::TCode;
 using ::com::journeyOS::J007engine::hidl::V1_0::J007EngineResponse;
@@ -64,7 +58,8 @@ public:
 
     Return<void> unregisterCallback(const sp <IJ007EngineCallback> &callback) override;
 
-    Return<bool> notifySceneChanged(const int32_t factors, const hidl_string &status, const hidl_string &packageName) override;
+    Return<bool>
+    notifySceneChanged(const int32_t factors, const hidl_string &status, const hidl_string &packageName) override;
 
     Return<bool> setConfig(const TCode code, const hidl_string &val) override;
 
@@ -93,23 +88,11 @@ private:
 
     static J007Engine *sInstance;
     //call back lists
-    std::vector <sp<IJ007EngineCallback>> mCallbacks;
-    std::recursive_mutex mCallbacksLock;
-
-    int32_t mFactors;
-    string mStatus = "";
-    string mPackageName = "";
+    vector <sp<IJ007EngineCallback>> mCallbacks;
+    recursive_mutex mCallbacksLock;
 
     string mConfigs = "";
-
-    int32_t mBatteryTemperature;
 };
 
-}//implementation
-}//V1_0
-}//hidl
-}//journeyOS
-}//J007engine
-}//com
 
 #endif //_J007ENGINE_H

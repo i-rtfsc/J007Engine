@@ -17,12 +17,24 @@
 #ifndef _FACTORS_H
 #define _FACTORS_H
 
-
+//factor type
 #define SCENE_FACTOR_APP                (1 << 1)
 #define SCENE_FACTOR_LCD                (1 << 2)
 #define SCENE_FACTOR_BRIGHTNESS         (1 << 3)
 #define SCENE_FACTOR_NET                (1 << 4)
 #define SCENE_FACTOR_HEADSET            (1 << 5)
 #define SCENE_FACTOR_BATTERY            (1 << 6)
+
+//app type
+#define SCENE_FACTOR_APP_DEFAULT        (1 << 1)
+#define SCENE_FACTOR_APP_ALBUM          (1 << 2)
+#define SCENE_FACTOR_APP_BROWSER        (1 << 3)
+#define SCENE_FACTOR_APP_GAME           (1 << 4)
+#define SCENE_FACTOR_APP_IM             (1 << 5)
+#define SCENE_FACTOR_APP_MUSIC          (1 << 6)
+#define SCENE_FACTOR_APP_NEWS           (1 << 7)
+#define SCENE_FACTOR_APP_READER         (1 << 8)
+#define SCENE_FACTOR_APP_VIDEO          (1 << 9)
+
 
 #endif //_FACTORS_H
