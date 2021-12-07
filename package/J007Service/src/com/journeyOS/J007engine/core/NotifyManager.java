@@ -51,7 +51,7 @@ public class NotifyManager {
 
     public int onFactorChanged(long factors, SceneState state) {
         String data = JsonUtils.toJson(state);
-        SmartLog.d(TAG, " factors = [" + factors + "], state = [" + state + "], packageName = [" + sPackageName + "]");
+        SmartLog.d(TAG, " factors = [" + factors + "], state = [" + data + "], packageName = [" + sPackageName + "]");
         HidlJ007EngineManager.getService().notifySceneChanged(factors, data, sPackageName);
         synchronized (mLock) {
             try {
@@ -72,8 +72,11 @@ public class NotifyManager {
         return 0;
     }
 
-    public int onFactorChanged(long factors, String packageName) {
-        String data = JsonUtils.toJson(getCurrentState());
+    public int onFactorChanged(long factors, long app) {
+        String packageName = getPackageName();
+        sState.app = app;
+        String data = JsonUtils.toJson(sState);
+
         SmartLog.d(TAG, " factors = [" + factors + "], state = [" + data + "], packageName = [" + packageName + "]");
         HidlJ007EngineManager.getService().notifySceneChanged(factors, data, packageName);
         synchronized (mLock) {
@@ -84,7 +87,7 @@ public class NotifyManager {
                     if (mMapListener != null) {
                         NotifyListener listener = mMapListener.get(factors);
                         if (listener != null) {
-                            listener.onFactorChanged(factors, getCurrentState());
+                            listener.onFactorChanged(factors, sState);
                         }
                     }
                 }

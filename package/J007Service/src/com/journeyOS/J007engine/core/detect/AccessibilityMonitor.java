@@ -17,8 +17,6 @@
 package com.journeyOS.J007engine.core.detect;
 
 import android.content.Context;
-import android.service.notification.NotificationListenerService;
-import android.service.notification.StatusBarNotification;
 import android.util.Singleton;
 
 import com.journeyOS.J007engine.accessibility.AccessibilityInfoObserver;
@@ -31,6 +29,15 @@ import com.journeyOS.J007engine.utils.SmartLog;
 
 public class AccessibilityMonitor extends Monitor implements ActivityListener {
     private static final String TAG = AccessibilityMonitor.class.getSimpleName();
+
+    public static final String ALBUM = "album";
+    public static final String BROWSER = "browser";
+    public static final String GAME = "game";
+    public static final String IM = "im";
+    public static final String MUSIC = "music";
+    public static final String NEWS = "news";
+    public static final String READER = "reader";
+    public static final String VIDEO = "video";
 
     private final AccessibilityInfoObserver mAccessibilityInfoObserver;
 
@@ -79,9 +86,34 @@ public class AccessibilityMonitor extends Monitor implements ActivityListener {
             if (packageName == null) {
                 return;
             }
-            NotifyManager.getDefault().onFactorChanged(Monitor.SCENE_FACTOR_APP, packageName);
+            //TODO
+            NotifyManager.getDefault().onFactorChanged(Monitor.SCENE_FACTOR_APP, Monitor.SCENE_FACTOR_APP_DEFAULT);
         }
         sPackageName = packageName;
     }
+
+//    public long getAppType(String packageName) {
+//        App app = DatabaseManager.getDefault().queryApp(packageName);
+//        SmartLog.d(TAG, "app = [" + app.type + "]");
+//        if (ALBUM.equals(app.type)) {
+//            return Monitor.SCENE_FACTOR_APP_ALBUM;
+//        } else if (BROWSER.equals(app.type)) {
+//            return Monitor.SCENE_FACTOR_APP_BROWSER;
+//        } else if (GAME.equals(app.type)) {
+//            return Monitor.SCENE_FACTOR_APP_GAME;
+//        } else if (IM.equals(app.type)) {
+//            return Monitor.SCENE_FACTOR_APP_IM;
+//        } else if (MUSIC.equals(app.type)) {
+//            return Monitor.SCENE_FACTOR_APP_MUSIC;
+//        } else if (NEWS.equals(app.type)) {
+//            return Monitor.SCENE_FACTOR_APP_NEWS;
+//        } else if (READER.equals(app.type)) {
+//            return Monitor.SCENE_FACTOR_APP_READER;
+//        } else if (VIDEO.equals(app.type)) {
+//            return Monitor.SCENE_FACTOR_APP_VIDEO;
+//        } else {
+//            return Monitor.SCENE_FACTOR_APP_DEFAULT;
+//        }
+//    }
 
 }

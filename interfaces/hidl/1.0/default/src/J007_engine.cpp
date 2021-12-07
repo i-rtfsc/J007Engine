@@ -21,12 +21,13 @@
 #include "factors.h"
 #include "json/json_object.h"
 #include "global_scene.h"
+#include "policy/cpu_policy_agent.h"
 
 
 J007Engine *J007Engine::sInstance = NULL;
 
 J007Engine::J007Engine() {
-    initConfig();
+    initAgent();
 }
 
 J007Engine::~J007Engine() {
@@ -40,8 +41,27 @@ J007Engine *J007Engine::getInstance() {
     return sInstance;
 }
 
-void J007Engine::initConfig() {
-    //TODO
+void J007Engine::initAgent() {
+    LOGD("init agent");
+    CpuPolicyAgent *cpuAgent = new CpuPolicyAgent();
+    addAgents(CPU_POLICY_AGENT, cpuAgent);
+}
+
+void J007Engine::addAgents(string flag, PolicyAgent *agent) {
+    LOGD("add agents, flag = %s", flag.c_str());
+    mAgentMap.insert(pair<string, PolicyAgent *>(flag, agent));
+}
+
+bool J007Engine::notifyCpuAgentAppSwitch() {
+    if (!mAgentMap.count(CPU_POLICY_AGENT)) {
+        return false;
+    }
+    int app = GlobalScene::getInstance()->getApp();
+    SourceScene sourceScene = GlobalScene::getInstance()->getSourceScene();
+    string status = sourceScene.status;
+    string packageName = sourceScene.packageName;
+    mAgentMap[CPU_POLICY_AGENT]->onAppSwitch(app, status, packageName);
+    return true;
 }
 
 Return<void> J007Engine::registerCallback(const sp <IJ007EngineCallback> &callback) {
@@ -124,7 +144,9 @@ J007Engine::notifySceneChanged(const int32_t factors, const hidl_string &status,
               packageName.c_str());
     }
     GlobalScene::getInstance()->updateScene(factors, status.c_str(), packageName.c_str());
-    //TODO
+    if (SCENE_FACTOR_APP == factors) {
+        notifyCpuAgentAppSwitch();
+    }
 
     return true;
 }

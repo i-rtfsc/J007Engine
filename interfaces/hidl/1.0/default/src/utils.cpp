@@ -66,7 +66,7 @@ char *Utils::read_file(const char *f_name, int *err, size_t *f_size) {
 
 string Utils::readFile(string file) {
     int fd;
-    char buffer[1024];
+    char buffer[1024 * 1024];
     string str = "";
 
     if (file.empty())
@@ -86,7 +86,7 @@ string Utils::readFile(string file) {
     //     }
     // }
     str = string(buffer);
-    ALOGI("read %s = %s ", file.c_str(), str.c_str());
+    //ALOGI("read %s = %s ", file.c_str(), str.c_str());
     return str;
 }
 

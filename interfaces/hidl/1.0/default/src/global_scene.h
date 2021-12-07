@@ -23,8 +23,6 @@
 
 using namespace std;
 
-#define LOG_TAG        "J007Engine-GlobalScene"
-
 struct SourceScene {
     int factors;
     string status;
@@ -49,15 +47,24 @@ public:
 
     void updateScene(int32_t factors, string status, string packageName);
 
-    SourceScene mSourceScene;
-    int mApp;
-    Battery mBattery;
-    long mBrightness;
+    SourceScene getSourceScene();
+
+    int getApp();
+
+    Battery getBattery();
+
+    long getBrightness();
+
 
 private:
     static GlobalScene *sInstance;
 
     void initConfig();
+
+    SourceScene mSourceScene;
+    int mApp;
+    Battery mBattery;
+    long mBrightness;
 };
 
 

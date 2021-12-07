@@ -37,4 +37,9 @@ public class Constant {
      * "com.journeyOS.J007engine.action.J007EngineService";
      */
     public static final String J007_ENGINE_SERVICE_AIDL = J007EngineManager.J007_ENGINE_SERVICE_AIDL;
+
+
+    //SharedPreferences KEY
+    public static final String DB_INIT = "J007DbInit";
+    public static final String DB_BL_INIT = "J007DbBLInit";
 }

@@ -37,9 +37,11 @@ build/
 **/build/
 **/**/build/
 
-*.jks/
-**/*.jks/
-**/**/*.jks/
+*.jks
+**/*.jks
+**/**/*.jks
+#package/J007Service/platform.jks
+#package/J007ServiceTest/platform.jks
 
 keystore.properties
 **/keystore.properties

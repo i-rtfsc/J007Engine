@@ -32,9 +32,10 @@ public class SmartLog {
     private static final String TAG = "J007Service";
 
     public static boolean isDebug() {
-        return "eng".equals(Build.TYPE)
-                || "userdebug".equals(Build.TYPE)
-                || Log.isLoggable("J007Engine", android.util.Log.DEBUG);
+//        return "eng".equals(Build.TYPE)
+//                || "userdebug".equals(Build.TYPE)
+//                || Log.isLoggable("J007Engine", android.util.Log.DEBUG);
+        return Log.isLoggable("J007Engine", android.util.Log.DEBUG);
     }
 
     private static String getMethodName() {

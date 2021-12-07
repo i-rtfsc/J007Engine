@@ -15,3 +15,9 @@
  */
 
 #include "policy_agent.h"
+
+PolicyAgent::PolicyAgent() {
+}
+
+PolicyAgent::~PolicyAgent() {
+}

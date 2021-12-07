@@ -29,6 +29,8 @@
 #include <com/journeyOS/J007engine/hidl/1.0/IJ007Engine.h>
 #include <com/journeyOS/J007engine/hidl/1.0/types.h>
 
+#include "policy/policy_agent.h"
+
 using ::com::journeyOS::J007engine::hidl::V1_0::IJ007Engine;
 using ::com::journeyOS::J007engine::hidl::V1_0::IJ007EngineCallback;
 using ::com::journeyOS::J007engine::hidl::V1_0::Status;
@@ -53,6 +55,8 @@ public:
     ~J007Engine();
 
     static J007Engine *getInstance();
+
+    void addAgents(string tag, PolicyAgent* agent);
 
     Return<void> registerCallback(const sp <IJ007EngineCallback> &callback) override;
 
@@ -80,7 +84,9 @@ public:
     getPackageName(const int32_t pid, IJ007Engine::getPackageName_cb _hidl_cb) override;
 
 private:
-    void initConfig();
+    void initAgent();
+
+    bool notifyCpuAgentAppSwitch();
 
     bool unregisterCallbackInternal(const sp <IBase> &cb);
 
@@ -92,6 +98,8 @@ private:
     recursive_mutex mCallbacksLock;
 
     string mConfigs = "";
+
+    map<string, PolicyAgent*> mAgentMap;
 };
 
 

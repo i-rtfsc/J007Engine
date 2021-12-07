@@ -18,6 +18,10 @@ include $(BUILD_MULTI_PREBUILT)
 #################################add build info to BuildConfig#################################
 
 include $(CLEAR_VARS)
+
+LOCAL_ASSET_DIR := \
+    $(LOCAL_PATH)/assets
+
 LOCAL_RESOURCE_DIR := \
     $(LOCAL_PATH)/res
 

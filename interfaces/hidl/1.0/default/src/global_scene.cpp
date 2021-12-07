@@ -19,6 +19,8 @@
 #include "factors.h"
 #include "json/json_object.h"
 
+#define LOG_TAG        "J007Engine-GlobalScene"
+
 GlobalScene *GlobalScene::sInstance = NULL;
 
 GlobalScene::GlobalScene() {
@@ -43,7 +45,8 @@ void GlobalScene::initConfig() {
 
 void GlobalScene::updateScene(int32_t factors, string status, string packageName) {
     if (DEBUG) {
-        ALOGI("notify scene changed, factors = %d , status = %s , packageName = %s\n", factors, status.c_str(), packageName.c_str());
+        ALOGI("notify scene changed, factors = %d , status = %s , packageName = %s\n", factors, status.c_str(),
+              packageName.c_str());
     }
 
     //update source scene
@@ -53,6 +56,7 @@ void GlobalScene::updateScene(int32_t factors, string status, string packageName
 
     switch (factors) {
         case SCENE_FACTOR_APP:
+            
             break;
         case SCENE_FACTOR_LCD:
             //TODO
@@ -75,4 +79,20 @@ void GlobalScene::updateScene(int32_t factors, string status, string packageName
             ALOGI("battery temperature  = %d ", mBattery.temperature);
             break;
     }
+}
+
+SourceScene GlobalScene::getSourceScene() {
+    return mSourceScene;
+}
+
+int GlobalScene::getApp() {
+    return mApp;
+}
+
+Battery GlobalScene::getBattery() {
+    return mBattery;
+}
+
+long GlobalScene::getBrightness() {
+    return mBrightness;
 }

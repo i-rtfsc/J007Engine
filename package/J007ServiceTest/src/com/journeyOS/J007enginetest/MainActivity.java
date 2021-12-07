@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements J007EngineManager
         button = new Button(this);
         button.setText("Get Config");
         button.setOnClickListener(v -> {
-            Log.d(TAG, "set config button click");
+            Log.d(TAG, "get config button click");
             J007EngineManager.getConfig(1);
         });
         mLayout.addView(button);

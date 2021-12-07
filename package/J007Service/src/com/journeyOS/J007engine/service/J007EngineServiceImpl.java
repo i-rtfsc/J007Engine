@@ -22,6 +22,7 @@ import com.journeyOS.J007engine.IJ007EngineListener;
 import com.journeyOS.J007engine.IJ007EngineInterface;
 import com.journeyOS.J007engine.clients.ClientSession;
 import com.journeyOS.J007engine.hidl.HidlJ007EngineManager;
+import com.journeyOS.J007engine.utils.SPUtils;
 import com.journeyOS.J007engine.utils.SmartLog;
 
 /**
@@ -75,6 +76,7 @@ public class J007EngineServiceImpl extends IJ007EngineInterface.Stub {
     public void setConfig(int feature, String json) throws RemoteException {
         SmartLog.d(TAG, "set J007 engine, feature = [" + feature + "], config = [" + json + "]");
         HidlJ007EngineManager.getService().setConfig(feature, json);
+        //SPUtils.getInstance().put("solo", "test");
     }
 
     @Override

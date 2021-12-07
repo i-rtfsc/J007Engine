@@ -1,0 +1,216 @@
+{
+  "cpuset": [
+    {
+      "name": "default_app",
+      "description": "only limit system-background",
+      "config": [
+        {
+          "cpu": "/dev/cpuset/restricted/cpus",
+          "value": "0-2"
+        },
+        {
+          "cpu": "/dev/cpuset/background/cpus",
+          "value": "0-2"
+        },
+        {
+          "cpu": "/dev/cpuset/foreground/cpus",
+          "value": "2-4"
+        },
+        {
+          "cpu": "/dev/cpuset/system-background/cpus",
+          "value": "0-5"
+        },
+        {
+          "cpu": "/dev/cpuset/top-app/cpus",
+          "value": "0-7"
+        },
+        {
+          "cpu": "/dev/cpuset/system-foreground/cpus",
+          "value": "0-6"
+        }
+      ]
+    },
+    {
+      "name": "special_app",
+      "description": "2 big cores only for top-app",
+      "config": [
+        {
+          "cpu": "/dev/cpuset/background/cpus",
+          "value": "0-5"
+        },
+        {
+          "cpu": "/dev/cpuset/foreground/cpus",
+          "value": "0-5"
+        },
+        {
+          "cpu": "/dev/cpuset/system-background/cpus",
+          "value": "0-5"
+        },
+        {
+          "cpu": "/dev/cpuset/top-app/cpus",
+          "value": "0-7"
+        },
+        {
+          "cpu": "/dev/cpuset/system-foreground/cpus",
+          "value": "0-5"
+        }
+      ]
+    },
+    {
+      "name": "top_app",
+      "description": "4 big cores, others 4 little cores",
+      "config": [
+        {
+          "cpu": "/dev/cpuset/background/cpus",
+          "value": "0-3"
+        },
+        {
+          "cpu": "/dev/cpuset/foreground/cpus",
+          "value": "2-5"
+        },
+        {
+          "cpu": "/dev/cpuset/system-background/cpus",
+          "value": "0-3"
+        },
+        {
+          "cpu": "/dev/cpuset/top-app/cpus",
+          "value": "4-7"
+        },
+        {
+          "cpu": "/dev/cpuset/system-foreground/cpus",
+          "value": "0-6"
+        }
+      ]
+    },
+    {
+      "name": "default_game_8",
+      "description": "top-app 8 cores, others 4 little cores",
+      "config": [
+        {
+          "cpu": "/dev/cpuset/background/cpus",
+          "value": "0-1"
+        },
+        {
+          "cpu": "/dev/cpuset/foreground/cpus",
+          "value": "0-2"
+        },
+        {
+          "cpu": "/dev/cpuset/system-background/cpus",
+          "value": "0-3"
+        },
+        {
+          "cpu": "/dev/cpuset/top-app/cpus",
+          "value": "0-7"
+        },
+        {
+          "cpu": "/dev/cpuset/system-foreground/cpus",
+          "value": "0-7"
+        }
+      ]
+    },
+    {
+      "name": "specific_game_7",
+      "description": "specific Game: top-app 7 cores, not use cpu7",
+      "config": [
+        {
+          "cpu": "/dev/cpuset/background/cpus",
+          "value": "0-1"
+        },
+        {
+          "cpu": "/dev/cpuset/foreground/cpus",
+          "value": "0-2"
+        },
+        {
+          "cpu": "/dev/cpuset/system-background/cpus",
+          "value": "0-3"
+        },
+        {
+          "cpu": "/dev/cpuset/top-app/cpus",
+          "value": "0-6"
+        },
+        {
+          "cpu": "/dev/cpuset/system-foreground/cpus",
+          "value": "0-7"
+        }
+      ]
+    },
+    {
+      "name": "specific_game_4",
+      "description": "top-app 4 cores",
+      "config": [
+        {
+          "cpu": "/dev/cpuset/background/cpus",
+          "value": "0-1"
+        },
+        {
+          "cpu": "/dev/cpuset/foreground/cpus",
+          "value": "0-2"
+        },
+        {
+          "cpu": "/dev/cpuset/system-background/cpus",
+          "value": "0-3"
+        },
+        {
+          "cpu": "/dev/cpuset/top-app/cpus",
+          "value": "4-7"
+        },
+        {
+          "cpu": "/dev/cpuset/system-foreground/cpus",
+          "value": "0-7"
+        }
+      ]
+    },
+    {
+      "name": "game_recording",
+      "description": "foreground more cores, SF/HWC to big cores",
+      "config": [
+        {
+          "cpu": "/dev/cpuset/background/cpus",
+          "value": "0-1"
+        },
+        {
+          "cpu": "/dev/cpuset/foreground/cpus",
+          "value": "0-3"
+        },
+        {
+          "cpu": "/dev/cpuset/system-background/cpus",
+          "value": "0-3"
+        },
+        {
+          "cpu": "/dev/cpuset/top-app/cpus",
+          "value": "0-7"
+        },
+        {
+          "cpu": "/dev/cpuset/system-foreground/cpus",
+          "value": "4-7"
+        }
+      ]
+    },
+    {
+      "name": "benchmark",
+      "description": "top-app and (system-)foreground 8 cores",
+      "config": [
+        {
+          "cpu": "/dev/cpuset/background/cpus",
+          "value": "0-3"
+        },
+        {
+          "cpu": "/dev/cpuset/foreground/cpus",
+          "value": "0-7"
+        },
+        {
+          "cpu": "/dev/cpuset/system-background/cpus",
+          "value": "0-3"
+        },
+        {
+          "cpu": "/dev/cpuset/top-app/cpus",
+          "value": "0-7"
+        },
+        {
+          "cpu": "/dev/cpuset/system-foreground/cpus",
+          "value": "0-7"
+        }
+      ]
+    }
+  ]
+}

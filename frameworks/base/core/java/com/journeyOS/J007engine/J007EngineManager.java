@@ -48,6 +48,17 @@ public class J007EngineManager {
     public static final long SCENE_FACTOR_HEADSET = 1 << 5;
     public static final long SCENE_FACTOR_BATTERY = 1 << 6;
 
+    //app type
+    public static final long SCENE_FACTOR_APP_DEFAULT = 1 << 1;
+    public static final long SCENE_FACTOR_APP_ALBUM = 1 << 2;
+    public static final long SCENE_FACTOR_APP_BROWSER = 1 << 3;
+    public static final long SCENE_FACTOR_APP_GAME = 1 << 4;
+    public static final long SCENE_FACTOR_APP_IM = 1 << 5;
+    public static final long SCENE_FACTOR_APP_MUSIC = 1 << 6;
+    public static final long SCENE_FACTOR_APP_NEWS = 1 << 7;
+    public static final long SCENE_FACTOR_APP_READER = 1 << 8;
+    public static final long SCENE_FACTOR_APP_VIDEO = 1 << 9;
+
     private static OnSceneChangedListener mSceneListener;
     private static long mFactorId;
 

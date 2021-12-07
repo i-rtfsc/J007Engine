@@ -17,8 +17,31 @@
 #ifndef _POLICY_AGENT_H
 #define _POLICY_AGENT_H
 
-class PolicyAgent {
+#define CPU_POLICY_AGENT            "cpuset"
+#define CPU_POLICY_AGENT_FILE       "/vendor/etc/j007_engine/cpuset.json"
 
+#include <string>
+
+using namespace std;
+
+class PolicyAgent {
+public:
+    PolicyAgent();
+
+    virtual ~PolicyAgent();
+
+    virtual bool onAppSwitch(int app, string status, string packageName) {
+        return true;
+    }
+
+protected:
+    virtual bool loadConfig() {
+        return true;
+    }
+
+    virtual string convertApp(int app) {
+        return "";
+    }
 };
 
 
