@@ -54,7 +54,6 @@ public class MainActivity extends AppCompatActivity implements J007EngineManager
         });
         mLayout.addView(button);
 
-
         ScrollView sv = new ScrollView(this);
         sv.addView(mLayout);
         setContentView(sv);

@@ -16,6 +16,10 @@
 
 package com.journeyOS.J007engine.help;
 
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
+
+import com.journeyOS.J007engine.core.J007Core;
 import com.journeyOS.J007engine.utils.SmartLog;
 
 import java.io.FileDescriptor;
@@ -31,6 +35,9 @@ public class DumpManager {
     private static final String H = "-h";
     private static final String HELP = "-help";
 
+    private static final String D = "-d";
+    private static final String DEBUG = "-debug";
+
     public static void dump(FileDescriptor fd, PrintWriter writer, String[] args) {
         if (writer == null || args == null) {
             SmartLog.w(TAG, "writer or args wasn't null");
@@ -45,6 +52,11 @@ public class DumpManager {
                 return;
             }
 
+            if ((D.equals(opt) || DEBUG.equals(opt))) {
+                dumpDebug();
+                return;
+            }
+
             //TODO
         }
     }
@@ -56,5 +68,16 @@ public class DumpManager {
         writer.println("      adb shell dumpsys activity service com.journeyOS.J007engine/com.journeyOS.J007engine.service.J007EngineService arg0 arg1 ...");
         writer.println("---------------------------------------------------------------");
         //TODO
+    }
+
+    private static void dumpDebug() {
+        try {
+            Intent intent = new Intent("com.journeyOS.J007engine.action.DEBUG");
+            intent.setPackage(J007Core.getCore().getContext().getPackageName());
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            J007Core.getCore().getContext().startActivity(intent);
+        } catch (ActivityNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }
