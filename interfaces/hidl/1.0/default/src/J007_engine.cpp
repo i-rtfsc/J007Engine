@@ -65,7 +65,7 @@ bool J007Engine::notifyCpuAgentAppSwitch() {
 }
 
 Return<void> J007Engine::registerCallback(const sp <IJ007EngineCallback> &callback) {
-    ALOGI("registerCallback(callback:%p).", &callback);
+    LOGI("registerCallback(callback:%p).", &callback);
     if (callback == nullptr) {
         ALOGE("can't registerCallback null ptr");
         return Return<void>();
@@ -91,7 +91,7 @@ Return<void> J007Engine::registerCallback(const sp <IJ007EngineCallback> &callba
 }
 
 Return<void> J007Engine::unregisterCallback(const sp <IJ007EngineCallback> &callback) {
-    ALOGI("unregisterCallback(callback:%p).", &callback);
+    LOGI("unregisterCallback(callback:%p).", &callback);
     unregisterCallbackInternal(callback);
     return Return<void>();
 }
@@ -119,7 +119,7 @@ void J007Engine::serviceDied(uint64_t /* cookie */, const wp <IBase> &who) {
 
 void J007Engine::onResponse(TCode code, string messages) {
     if (DEBUG) {
-        ALOGI("on response code = %d , messages = %s\n", code, messages.c_str());
+        LOGI("on response code = %d , messages = %s\n", code, messages.c_str());
     }
     struct J007EngineResponse response;
     response.status = Status::SUCCESS;
@@ -153,7 +153,7 @@ J007Engine::notifySceneChanged(const int32_t factors, const hidl_string &status,
 
 Return<bool> J007Engine::setConfig(const TCode code, const hidl_string &val) {
     if (DEBUG) {
-        ALOGI("set config code = %d , messages = %s\n", code, val.c_str());
+        LOGI("set config code = %d , messages = %s\n", code, val.c_str());
     }
     switch (code) {
         case TCode::SET_XXX:
@@ -194,7 +194,7 @@ Return<void> J007Engine::readProperty(const hidl_string &key, const hidl_string 
     }
 
     success:
-    ALOGI("read property %s = %s ", key.c_str(), buf);
+    LOGI("read property %s = %s ", key.c_str(), buf);
     _hidl_cb(buf);
     return Return<void>();
 }

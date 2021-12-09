@@ -1,0 +1,20 @@
+cc_binary {
+    name: "com.journeyOS.J007engine.hidl.test",
+
+    relative_install_path: "hw",
+
+    proprietary: true,
+
+    srcs: ["test.cpp"],
+
+    shared_libs: [
+        "liblog",
+        "libbase",
+        "libutils",
+        "libhardware",
+        "libbinder",
+        "libhidlbase",
+        "com.journeyOS.J007engine.hidl@1.0",
+    ],
+
+}

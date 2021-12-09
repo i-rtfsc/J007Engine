@@ -1,0 +1,67 @@
+package com.journeyOS.J007engine;
+
+
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.journeyOS.J007engine.database.settings.SettingsManager;
+import com.journeyOS.J007engine.utils.SPUtils;
+
+public class DebugActivity extends AppCompatActivity {
+    private static final String TAG = "DebugActivity";
+    private LinearLayout mLayout;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mLayout = new LinearLayout(this);
+        mLayout.setOrientation(LinearLayout.VERTICAL);
+        initView();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
+    private void initView() {
+        Log.d(TAG, "init view");
+        TextView textView = new TextView(this);
+        mLayout.addView(textView);
+
+        Button button = new Button(this);
+        button.setText("Save sp");
+        button.setOnClickListener(v -> {
+            Log.d(TAG, "set config button click");
+//            SPUtils.getInstance().put("testKey", "testValue");
+            SettingsManager.put("testKey", "testValue");
+            /**
+             * /data/data/com.journeyOS.J007engine/
+             * /data/user_de/0/com.journeyOS.J007engine/
+             */
+        });
+        mLayout.addView(button);
+
+        button = new Button(this);
+        button.setText("Get sp");
+        button.setOnClickListener(v -> {
+//            String value = SPUtils.getInstance().getString("testKey", "null");
+            String value = SettingsManager.getString("testKey", "null");
+            Log.d(TAG, "get config button click = " + value);
+            textView.setText(value + " time = " + System.currentTimeMillis());
+        });
+        mLayout.addView(button);
+
+        ScrollView sv = new ScrollView(this);
+        sv.addView(mLayout);
+        setContentView(sv);
+    }
+
+}

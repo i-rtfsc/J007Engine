@@ -1,0 +1,76 @@
+android_app {
+    name: "J007Service",
+
+    asset_dirs: ["assets"],
+
+    resource_dirs: ["res"],
+
+    srcs: [
+        "src/**/*.java",
+        ":J007Service_aidl"
+    ],
+
+    static_libs: [
+        "androidx.paging_paging-common",
+        "androidx.appcompat_appcompat",
+        "androidx.room_room-runtime",
+        "com.journeyOS.J007engine.hidl-V1.0-java",
+        "gson-prebuilt-jar",
+    ],
+
+    plugins: [
+            "androidx.room_room-compiler-plugin",
+    ],
+
+    certificate: "platform",
+
+    jni_libs: ["j007_service_jni"],
+    optimize: {
+        proguard_flags_files: ["proguard.flags"],
+    },
+
+    privileged: true,
+    platform_apis: true,
+    required: ["privapp_whitelist_com.journeyOS.J007engine.xml"],
+}
+
+//priv-app permissions
+prebuilt_etc {
+    name: "privapp_whitelist_com.journeyOS.J007engine.xml",
+    src: "privapp_whitelist_com.journeyOS.J007engine.xml",
+    sub_dir: "permissions",
+}
+
+filegroup {
+    name: "J007Service_aidl",
+    srcs: [
+        "aidl/com/journeyOS/J007engine/IJ007EngineInterface.aidl",
+        "aidl/com/journeyOS/J007engine/IJ007EngineListener.aidl",
+    ],
+    path: "aidl",
+}
+
+cc_library_shared {
+    name: "j007_service_jni",
+    srcs: [
+        "jni/**/*.cpp",
+        "jni/**/*.c",
+    ],
+    shared_libs: [
+        "libbase",
+        "libandroid",
+        "liblog",
+    ],
+    cflags: [
+        "-Wall",
+        "-Werror",
+        "-Wextra",
+        "-Wno-unused-parameter",
+        "-Wno-switch",
+        "-Wno-unused-function",
+        "-Wno-unused-variable",
+    ],
+    sanitize: {
+        scs: true,
+    },
+}

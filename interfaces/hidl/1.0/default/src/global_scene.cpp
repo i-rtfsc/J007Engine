@@ -45,7 +45,7 @@ void GlobalScene::initConfig() {
 
 void GlobalScene::updateScene(int32_t factors, string status, string packageName) {
     if (DEBUG) {
-        ALOGI("notify scene changed, factors = %d , status = %s , packageName = %s\n", factors, status.c_str(),
+        LOGI("notify scene changed, factors = %d , status = %s , packageName = %s\n", factors, status.c_str(),
               packageName.c_str());
     }
 
@@ -76,7 +76,7 @@ void GlobalScene::updateScene(int32_t factors, string status, string packageName
             //TODO
             JsonObject oJson(status);
             oJson["battery"].Get("temperature", mBattery.temperature);
-            ALOGI("battery temperature  = %d ", mBattery.temperature);
+            LOGI("battery temperature  = %d ", mBattery.temperature);
             break;
     }
 }

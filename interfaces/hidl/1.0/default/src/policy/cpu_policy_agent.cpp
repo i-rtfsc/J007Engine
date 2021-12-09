@@ -38,6 +38,7 @@ bool CpuPolicyAgent::onAppSwitch(int app, string status, string packageName) {
     map <string, string> configs = mCpuConfig[convertApp(app)];
     for (auto &&config : configs) {
         LOGD("cpu = %s , value = %s\n", config.first.c_str(), config.second.c_str());
+        //TODO
     }
 
     return true;

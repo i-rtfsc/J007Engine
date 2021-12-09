@@ -1,0 +1,39 @@
+cc_binary {
+    name: "com.journeyOS.J007engine.hidl@1.0-service",
+
+    relative_install_path: "hw",
+
+    proprietary: true,
+
+    init_rc: ["com.journeyOS.J007engine.hidl@1.0-service.rc"],
+
+    vintf_fragments: ["com.journeyOS.J007engine.hidl@1.0-service.xml"],
+
+    srcs: [
+        "src/**/*.c",
+        "src/**/*.cpp",
+    ],
+
+    shared_libs: [
+        "liblog",
+        "libcutils",
+        "libdl",
+        "libbase",
+        "libutils",
+        "libhardware",
+        "libui",
+        "libbinder",
+        "libhidlbase",
+        "com.journeyOS.J007engine.hidl@1.0",
+    ],
+
+    include_dirs: [
+        "external/skia/include",
+        "frameworks/native/libs/nativewindow/include",
+        "frameworks/native/libs/arect/include",
+        "frameworks/native/libs/nativebase/include",
+        "system/libhidl/transport/token/1.0/utils/include",
+        "system/core/libcutils/include/cutils",
+    ],
+
+}

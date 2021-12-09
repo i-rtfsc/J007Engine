@@ -1,2 +1,1 @@
--keep class com.journeyOS.J007engine.service.J007EngineService { *; }
--keep class com.journeyOS.J007engine.service.J007EngineServiceImpl { *; }
+-keep class com.journeyOS.007enginetest.MainActivity { *; }

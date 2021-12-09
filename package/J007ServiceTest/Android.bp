@@ -1,0 +1,16 @@
+//android_test
+android_app {
+    name: "J007ServiceTest",
+
+    resource_dirs: ["res"],
+
+    srcs: ["src/**/*.java"],
+
+    static_libs: ["androidx.appcompat_appcompat"],
+
+    libs: ["framework"],
+
+    certificate: "platform",
+
+    platform_apis: true,
+}
