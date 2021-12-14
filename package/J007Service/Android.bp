@@ -7,7 +7,8 @@ android_app {
 
     srcs: [
         "src/**/*.java",
-        ":J007Service_aidl"
+        ":J007Service_aidl",
+        ":J007_build_config"
     ],
 
     static_libs: [
@@ -48,6 +49,14 @@ filegroup {
         "aidl/com/journeyOS/J007engine/IJ007EngineListener.aidl",
     ],
     path: "aidl",
+}
+
+filegroup {
+    name: "J007_build_config",
+    srcs: [
+        "build/java/com/journeyOS/J007engine/BuildConfig.java",
+    ],
+    path: "build/java",
 }
 
 cc_library_shared {

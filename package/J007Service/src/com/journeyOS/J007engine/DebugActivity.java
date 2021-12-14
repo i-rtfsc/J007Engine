@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.journeyOS.J007engine.BuildConfig;
+
 import com.journeyOS.J007engine.database.settings.SettingsManager;
 import com.journeyOS.J007engine.utils.SPUtils;
 
@@ -58,6 +60,10 @@ public class DebugActivity extends AppCompatActivity {
             textView.setText(value + " time = " + System.currentTimeMillis());
         });
         mLayout.addView(button);
+
+        TextView version = new TextView(this);
+        version.setText(BuildConfig.BUILD_VERSION_NAME);
+        mLayout.addView(version);
 
         ScrollView sv = new ScrollView(this);
         sv.addView(mLayout);
