@@ -2,7 +2,7 @@
 PRODUCT_COPY_FILES += \
     vendor/journeyOS/proprietary/J007Engine/interfaces/hidl/1.0/default/config/cpuset.json:/vendor/etc/j007_engine/cpuset.json
 
--include vendor/journeyOS/proprietary/J007Engine/version.mk
+-include vendor/journeyOS/proprietary/J007Engine/build_config.mk
 
 # Add J007Engine hidl & J007Service
 J007_ENGINE := com.journeyOS.J007engine.hidl@1.0-service

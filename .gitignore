@@ -62,11 +62,11 @@ local.properties
 # ignore OS X metadata
 .DS_Store
 **/.DS_Store
-**/**/.DS_Store
+**/*/.DS_Store
 
-# ._.DS_Store
-# **/._.DS_Store
-# **/**/._.DS_Store
+__pycache__
+**/*/__pycache__
+
 ._*
 **/._*
 **/**/._*
