@@ -13,3 +13,23 @@ filegroup {
         "base/core/java/com/journeyOS/J007engine/J007EngineManager.java",
     ],
 }
+
+java_library {
+    name: "jos-framework",
+    installable: true,
+    sdk_version: "core_platform",
+
+    libs: [
+        "framework",
+        "services",
+    ],
+
+    srcs: [
+        ":J007_engine_framework_aidl",
+        ":J007_engine_framework_base_java",
+    ],
+
+    aidl: {
+        local_include_dirs: [":J007_engine_framework_aidl"],
+    },
+}

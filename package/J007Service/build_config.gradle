@@ -1,0 +1,86 @@
+ext {
+    timeList = buildTime()
+    year = timeList[0] - getFirstYear()
+    month = timeList[1]
+    birthday = timeList[0] + "/" + timeList[1] + "/1"
+    commitCount = getCommitCount(birthday)
+    //app版本
+    versionCode = genVerCode(timeList[0], month, commitCount)
+    versionName = genVerName(year, month, commitCount)
+    versionBranch = getLocalBranchName()
+}
+
+//https://stackoverflow.com/questions/17097263/automatic-versioning-of-android-build-using-git-describe-with-gradle
+def static getFirstYear() {
+    def mainCountCmd = ["git", "log", "--reverse", "--pretty=format:%ci"]
+    def time = mainCountCmd.execute().pipeTo("sed -n 1p".execute()).text
+    println "$time"
+    def year = time.split(" ")[0].split("-")[0] as Integer
+    println "$year"
+    return year
+}
+
+/**
+ * 组织版本号（VersionCode）
+ * @param year 大版本
+ * @param month 小版本
+ * @param commitCount 小版本版本启动日
+ * @return eg:20211209
+ */
+def static genVerCode(int year, int month, int commitCount) {
+    return year * 100 * 100 + month * 100 + commitCount
+}
+
+/**
+ * 组织版本名（VersionName）
+ * @param year 大版本
+ * @param month 小版本
+ * @param commitCount 小版本版本启动日
+ * @return eg:v.0.12.9.20211220.main.99824ec
+ */
+def static genVerName(int year, int month, int commitCount) {
+    def today = new Date().format("yyMMdd")
+    def branchName = getLocalBranchName()
+    def shortId = getShortCommitId()
+    return "v$year.$month.$commitCount.$today.$branchName.$shortId"
+}
+
+/**
+ * 获取累计提交数
+ *
+ * @param 小版本号更新日期
+ * @return 累计提交数
+ */
+def static getCommitCount(String date, String path = "./") {
+    def mainCountCmd = ["git", "log", "--pretty=format:%h", "--after='$date 0:0:0 +0800'", path]
+
+    if (org.gradle.internal.os.OperatingSystem.current().isWindows()) {
+        return mainCountCmd.execute().pipeTo("find /v \"\" /c".execute()).text.toInteger()
+    } else if (org.gradle.internal.os.OperatingSystem.current().isLinux()) {
+        return mainCountCmd.execute().pipeTo("wc -l".execute()).text.toInteger() + 1
+    } else if (org.gradle.internal.os.OperatingSystem.current().isMacOsX()) {
+        return mainCountCmd.execute().pipeTo("wc -l".execute()).text.toInteger() + 1
+    }
+}
+
+/**
+ * 获取简短commit号
+ * @return
+ */
+def static getShortCommitId() {
+    return 'git rev-parse --short HEAD'.execute().text.trim()
+}
+
+
+def static getLocalBranchName() {
+    def result = "git symbolic-ref --short -q HEAD".execute().text.trim()
+    result += ""
+    return result
+}
+
+def static buildTime() {
+    def year = new Date().format("yyyy", TimeZone.getTimeZone("GMT+08:00")).toString().toInteger()
+    def month = new Date().format("MM", TimeZone.getTimeZone("GMT+08:00")).toString().toInteger()
+    def day = new Date().format("dd", TimeZone.getTimeZone("GMT+08:00")).toString().toInteger()
+    return [year, month, day]
+}

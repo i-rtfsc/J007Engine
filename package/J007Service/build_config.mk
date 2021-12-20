@@ -6,4 +6,3 @@ LOCAL_J007_CMD := python $(TOP)/vendor/journeyOS/proprietary/J007Engine/build_sc
 
 $(warning $(LOCAL_J007_CMD))
 _result_:=$(shell $(LOCAL_J007_CMD))
-# $(foreach _,$(_result_),$(warning $(_)))

@@ -18,9 +18,7 @@ package com.journeyOS.J007engine;
 
 import com.journeyOS.J007engine.IJ007EngineListener;
 
-/**
- * {@hide}
- */
+
 interface IJ007EngineInterface {
     void registerCallBack(long factors, IJ007EngineListener cb);
     void unregisterCallback(IJ007EngineListener cb);    

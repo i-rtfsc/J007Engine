@@ -19,6 +19,7 @@ package com.journeyOS.J007engine.help;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 
+import com.journeyOS.J007engine.BuildConfig;
 import com.journeyOS.J007engine.core.J007Core;
 import com.journeyOS.J007engine.utils.SmartLog;
 
@@ -62,6 +63,8 @@ public class DumpManager {
     }
 
     private static void dumpHelp(PrintWriter writer) {
+        writer.println("---------------------------------------------------------------");
+        writer.println("build version name = " + BuildConfig.BUILD_VERSION_NAME);
         writer.println("---------------------------------------------------------------");
         writer.println("  help");
         writer.println("      Print this help text.");

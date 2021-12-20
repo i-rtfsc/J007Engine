@@ -30,9 +30,6 @@ import android.util.Singleton;
 import com.android.internal.os.BackgroundThread;
 
 
-/**
- * {@hide}
- */
 public class J007EngineManager {
     public static final String TAG = J007EngineManager.class.getSimpleName();
     public static final String J007_ENGINE_DEBUG = "J007Engine";

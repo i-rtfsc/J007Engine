@@ -11,10 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.journeyOS.J007engine.BuildConfig;
-
 import com.journeyOS.J007engine.database.settings.SettingsManager;
-import com.journeyOS.J007engine.utils.SPUtils;
 
 public class DebugActivity extends AppCompatActivity {
     private static final String TAG = "DebugActivity";

@@ -6,9 +6,12 @@ android_app {
 
     srcs: ["src/**/*.java"],
 
-    static_libs: ["androidx.appcompat_appcompat"],
+    static_libs: [
+        "androidx.appcompat_appcompat",
+        "jos-framework",
+    ],
 
-    libs: ["framework"],
+    //libs: ["framework"],
 
     certificate: "platform",
 

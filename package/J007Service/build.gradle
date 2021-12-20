@@ -1,3 +1,5 @@
+apply from: 'build_config.gradle'
+
 buildscript {
     repositories {
         google()
@@ -26,9 +28,10 @@ android {
     defaultConfig {
         minSdkVersion 27
         targetSdkVersion 29
-        // versionCode 1
-        // versionName "1.0"
-        // applicationId "com.journeyOS.J007engine"
+
+        //使用buildConfigField向BuildConfig类中写入常量
+        buildConfigField("int", "BUILD_VERSION_CODE", rootProject.ext.versionCode + "")
+        buildConfigField("String", "BUILD_VERSION_NAME", "\"" + rootProject.ext.versionName + "\"")
     }
 
     sourceSets {

@@ -16,9 +16,7 @@
 
 package com.journeyOS.J007engine;
 
-/**
- * {@hide}
- */
+
 interface IJ007EngineListener {
     void onSceneChanged(long factorId, String status, String packageName);
 }
