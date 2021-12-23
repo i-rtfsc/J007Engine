@@ -26,15 +26,35 @@
 #define SCENE_FACTOR_BATTERY            (1 << 6)
 
 //app type
-#define SCENE_FACTOR_APP_DEFAULT        (1 << 1)
-#define SCENE_FACTOR_APP_ALBUM          (1 << 2)
-#define SCENE_FACTOR_APP_BROWSER        (1 << 3)
-#define SCENE_FACTOR_APP_GAME           (1 << 4)
-#define SCENE_FACTOR_APP_IM             (1 << 5)
-#define SCENE_FACTOR_APP_MUSIC          (1 << 6)
-#define SCENE_FACTOR_APP_NEWS           (1 << 7)
-#define SCENE_FACTOR_APP_READER         (1 << 8)
-#define SCENE_FACTOR_APP_VIDEO          (1 << 9)
+//only limit system-background
+#define APP_DEFAULT                     "default"
+
+//4 big cores, others 4 little cores
+#define APP_ALBUM                       "album"
+
+//2 big cores only for top-app
+#define APP_IM                          "im"
+#define APP_MUSIC                       "music"
+
+//op-app 8 cores, others 4 little cores
+#define APP_GAME                        "game"
+//top-app and (system-)foreground 8 cores
+#define APP_BENCHMARK                   "benchmark"
+
+//foreground more cores, SF/HWC to big cores
+#define APP_VIDEO                       "video"
+#define APP_LIVE                        "live"
+
+//top-app 7 cores, not use cpu7
+#define APP_NEWS                        "news"
+#define APP_READER                      "reader"
+#define APP_BROWSER                     "browser"
+#define APP_WEIBO                       "weibo"
+#define APP_SHOP                        "shop"
+
+//top-app 4 cores
+#define APP_LAUNCHER                    "launcher"
+#define APP_NAVIGATION                  "navigation"
 
 
 #endif //_FACTORS_H

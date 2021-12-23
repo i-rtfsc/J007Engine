@@ -38,6 +38,7 @@ public class J007EngineManager {
     public static final String J007_ENGINE_PACKAGE = "com.journeyOS.J007engine";
     public static final String J007_ENGINE_SERVICE_AIDL = "com.journeyOS.J007engine.action.J007EngineService";
 
+    //app scene
     public static final long SCENE_FACTOR_APP = 1 << 1;
     public static final long SCENE_FACTOR_LCD = 1 << 2;
     public static final long SCENE_FACTOR_BRIGHTNESS = 1 << 3;
@@ -46,15 +47,21 @@ public class J007EngineManager {
     public static final long SCENE_FACTOR_BATTERY = 1 << 6;
 
     //app type
-    public static final long SCENE_FACTOR_APP_DEFAULT = 1 << 1;
-    public static final long SCENE_FACTOR_APP_ALBUM = 1 << 2;
-    public static final long SCENE_FACTOR_APP_BROWSER = 1 << 3;
-    public static final long SCENE_FACTOR_APP_GAME = 1 << 4;
-    public static final long SCENE_FACTOR_APP_IM = 1 << 5;
-    public static final long SCENE_FACTOR_APP_MUSIC = 1 << 6;
-    public static final long SCENE_FACTOR_APP_NEWS = 1 << 7;
-    public static final long SCENE_FACTOR_APP_READER = 1 << 8;
-    public static final long SCENE_FACTOR_APP_VIDEO = 1 << 9;
+    public static final String APP_DEFAULT = "default";
+    public static final String APP_ALBUM = "album";
+    public static final String APP_BROWSER = "browser";
+    public static final String APP_GAME = "game";
+    public static final String APP_IM = "im";
+    public static final String APP_MUSIC = "music";
+    public static final String APP_NEWS = "news";
+    public static final String APP_READER = "reader";
+    public static final String APP_VIDEO = "video";
+    public static final String APP_NAVIGATION = "navigation";
+    public static final String APP_LAUNCHER = "launcher";
+    public static final String APP_LIVE = "live";
+    public static final String APP_WEIBO = "weibo";
+    public static final String APP_BENCHMARK = "benchmark";
+    public static final String APP_SHOP = "shop";
 
     private static OnSceneChangedListener mSceneListener;
     private static long mFactorId;

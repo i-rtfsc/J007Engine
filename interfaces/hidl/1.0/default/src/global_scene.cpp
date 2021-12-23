@@ -46,7 +46,7 @@ void GlobalScene::initConfig() {
 void GlobalScene::updateScene(int32_t factors, string status, string packageName) {
     if (DEBUG) {
         LOGI("notify scene changed, factors = %d , status = %s , packageName = %s\n", factors, status.c_str(),
-              packageName.c_str());
+             packageName.c_str());
     }
 
     //update source scene
@@ -54,9 +54,15 @@ void GlobalScene::updateScene(int32_t factors, string status, string packageName
     mSourceScene.status = status;
     mSourceScene.packageName = packageName;
 
+    JsonObject oJson(status);
     switch (factors) {
         case SCENE_FACTOR_APP:
-            
+            oJson["app"].Get("packageName", mApp.packageName);
+            oJson["app"].Get("type", mApp.type);
+            oJson["app"].Get("mode", mApp.mode);
+            oJson["app"].Get("fps", mApp.fps);
+            oJson["app"].Get("cpu", mApp.cpu);
+            oJson["app"].Get("memc", mApp.memc);
             break;
         case SCENE_FACTOR_LCD:
             //TODO
@@ -74,7 +80,7 @@ void GlobalScene::updateScene(int32_t factors, string status, string packageName
             break;
         case SCENE_FACTOR_BATTERY:
             //TODO
-            JsonObject oJson(status);
+
             oJson["battery"].Get("temperature", mBattery.temperature);
             LOGI("battery temperature  = %d ", mBattery.temperature);
             break;
@@ -85,7 +91,7 @@ SourceScene GlobalScene::getSourceScene() {
     return mSourceScene;
 }
 
-int GlobalScene::getApp() {
+App GlobalScene::getApp() {
     return mApp;
 }
 

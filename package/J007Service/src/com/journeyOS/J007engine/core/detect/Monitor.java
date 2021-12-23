@@ -58,15 +58,5 @@ public abstract class Monitor {
      */
     public static final long SCENE_FACTOR_BATTERY = J007EngineManager.SCENE_FACTOR_BATTERY;
 
-
-    public static final long SCENE_FACTOR_APP_DEFAULT = J007EngineManager.SCENE_FACTOR_APP_DEFAULT;
-    public static final long SCENE_FACTOR_APP_ALBUM = J007EngineManager.SCENE_FACTOR_APP_ALBUM;
-    public static final long SCENE_FACTOR_APP_BROWSER = J007EngineManager.SCENE_FACTOR_APP_BROWSER;
-    public static final long SCENE_FACTOR_APP_GAME = J007EngineManager.SCENE_FACTOR_APP_GAME;
-    public static final long SCENE_FACTOR_APP_IM = J007EngineManager.SCENE_FACTOR_APP_IM;
-    public static final long SCENE_FACTOR_APP_MUSIC = J007EngineManager.SCENE_FACTOR_APP_MUSIC;
-    public static final long SCENE_FACTOR_APP_NEWS = J007EngineManager.SCENE_FACTOR_APP_NEWS;
-    public static final long SCENE_FACTOR_APP_READER = J007EngineManager.SCENE_FACTOR_APP_READER;
-    public static final long SCENE_FACTOR_APP_VIDEO = J007EngineManager.SCENE_FACTOR_APP_VIDEO;
-
+    public static final String APP_DEFAULT = J007EngineManager.APP_DEFAULT;
 }

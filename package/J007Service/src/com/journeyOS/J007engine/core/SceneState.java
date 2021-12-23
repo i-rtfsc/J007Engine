@@ -16,11 +16,13 @@
 
 package com.journeyOS.J007engine.core;
 
-import com.journeyOS.J007engine.core.detect.Monitor;
+import com.journeyOS.J007engine.database.app.App;
 
 public class SceneState {
-    public long app = Monitor.SCENE_FACTOR_APP_DEFAULT;
+
     public Battery battery;
+
+    public App app;
 
     public static class Battery {
         public int level = -1;

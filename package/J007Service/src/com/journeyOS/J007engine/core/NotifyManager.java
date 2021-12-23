@@ -20,6 +20,7 @@ import android.util.ArrayMap;
 import android.util.Singleton;
 
 import com.journeyOS.J007engine.clients.ClientSession;
+import com.journeyOS.J007engine.database.app.App;
 import com.journeyOS.J007engine.hidl.HidlJ007EngineManager;
 import com.journeyOS.J007engine.utils.JsonUtils;
 import com.journeyOS.J007engine.utils.SmartLog;
@@ -72,7 +73,7 @@ public class NotifyManager {
         return 0;
     }
 
-    public int onFactorChanged(long factors, long app) {
+    public int onFactorChanged(long factors, App app) {
         String packageName = getPackageName();
         sState.app = app;
         String data = JsonUtils.toJson(sState);

@@ -1,7 +1,7 @@
 {
   "cpuset": [
     {
-      "name": "default_app",
+      "name": "default",
       "description": "only limit system-background",
       "config": [
         {
@@ -31,7 +31,7 @@
       ]
     },
     {
-      "name": "special_app",
+      "name": "im",
       "description": "2 big cores only for top-app",
       "config": [
         {
@@ -57,7 +57,7 @@
       ]
     },
     {
-      "name": "top_app",
+      "name": "album",
       "description": "4 big cores, others 4 little cores",
       "config": [
         {
@@ -83,7 +83,7 @@
       ]
     },
     {
-      "name": "default_game_8",
+      "name": "game",
       "description": "top-app 8 cores, others 4 little cores",
       "config": [
         {
@@ -109,8 +109,8 @@
       ]
     },
     {
-      "name": "specific_game_7",
-      "description": "specific Game: top-app 7 cores, not use cpu7",
+      "name": "news",
+      "description": "top-app 7 cores, not use cpu7",
       "config": [
         {
           "cpu": "/dev/cpuset/background/cpus",
@@ -135,7 +135,7 @@
       ]
     },
     {
-      "name": "specific_game_4",
+      "name": "launcher",
       "description": "top-app 4 cores",
       "config": [
         {
@@ -161,7 +161,7 @@
       ]
     },
     {
-      "name": "game_recording",
+      "name": "video",
       "description": "foreground more cores, SF/HWC to big cores",
       "config": [
         {

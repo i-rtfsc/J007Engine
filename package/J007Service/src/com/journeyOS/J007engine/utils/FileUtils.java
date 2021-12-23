@@ -27,15 +27,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 public class FileUtils {
-    public static final String ALBUM = "album.json";
-    public static final String BROWSER = "browser.json";
-    public static final String GAME = "game.json";
-    public static final String IM = "im.json";
-    public static final String MUSIC = "music.json";
-    public static final String NEWS = "news.json";
-    public static final String READER = "reader.json";
-    public static final String VIDEO = "video.json";
-    public static final String BL = "bl.json";
     private static final String TAG = FileUtils.class.getSimpleName();
 
     public static String readFileFromAsset(Context context, String fileName) {

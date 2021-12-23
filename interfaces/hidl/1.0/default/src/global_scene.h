@@ -29,6 +29,15 @@ struct SourceScene {
     string packageName;
 };
 
+struct App {
+    string packageName;
+    string type;
+    int mode;
+    int fps;
+    int cpu;
+    int memc;
+};
+
 struct Battery {
     int level;
     int pluggedIn;
@@ -49,7 +58,7 @@ public:
 
     SourceScene getSourceScene();
 
-    int getApp();
+    App getApp();
 
     Battery getBattery();
 
@@ -62,7 +71,7 @@ private:
     void initConfig();
 
     SourceScene mSourceScene;
-    int mApp;
+    App mApp;
     Battery mBattery;
     long mBrightness;
 };

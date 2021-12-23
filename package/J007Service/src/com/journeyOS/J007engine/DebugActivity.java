@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.journeyOS.J007engine.database.LocalDataSourceImpl;
 import com.journeyOS.J007engine.database.settings.SettingsManager;
 
 public class DebugActivity extends AppCompatActivity {
@@ -39,8 +40,10 @@ public class DebugActivity extends AppCompatActivity {
         button.setText("Save sp");
         button.setOnClickListener(v -> {
             Log.d(TAG, "set config button click");
-//            SPUtils.getInstance().put("testKey", "testValue");
-            SettingsManager.put("testKey", "testValue");
+            //SettingsManager.put("testKey", "testValue");
+
+            LocalDataSourceImpl.getDefault().initApp();
+
             /**
              * /data/data/com.journeyOS.J007engine/
              * /data/user_de/0/com.journeyOS.J007engine/
@@ -51,7 +54,6 @@ public class DebugActivity extends AppCompatActivity {
         button = new Button(this);
         button.setText("Get sp");
         button.setOnClickListener(v -> {
-//            String value = SPUtils.getInstance().getString("testKey", "null");
             String value = SettingsManager.getString("testKey", "null");
             Log.d(TAG, "get config button click = " + value);
             textView.setText(value + " time = " + System.currentTimeMillis());

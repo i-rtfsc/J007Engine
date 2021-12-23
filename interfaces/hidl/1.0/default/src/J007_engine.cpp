@@ -56,7 +56,7 @@ bool J007Engine::notifyCpuAgentAppSwitch() {
     if (!mAgentMap.count(CPU_POLICY_AGENT)) {
         return false;
     }
-    int app = GlobalScene::getInstance()->getApp();
+    App app = GlobalScene::getInstance()->getApp();
     SourceScene sourceScene = GlobalScene::getInstance()->getSourceScene();
     string status = sourceScene.status;
     string packageName = sourceScene.packageName;

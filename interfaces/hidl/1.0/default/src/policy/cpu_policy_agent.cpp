@@ -25,20 +25,24 @@
 
 
 CpuPolicyAgent::CpuPolicyAgent() {
+    initMap();
     loadConfig();
 }
 
 CpuPolicyAgent::~CpuPolicyAgent() {
 }
 
-bool CpuPolicyAgent::onAppSwitch(int app, string status, string packageName) {
-    LOGI("app switch, app = %d , status = %s , packageName = %s\n", app, status.c_str(),
-         packageName.c_str());
+bool CpuPolicyAgent::onAppSwitch(App app, string status, string packageName) {
+    LOGI("app switch, packageName = %s , type = %s , status = %s\n", app.packageName.c_str(), app.type.c_str(),
+         status.c_str());
 
-    map <string, string> configs = mCpuConfig[convertApp(app)];
+    string cup_set = mAppType[app.type];
+    LOGI("cup_set = %s \n", cup_set.c_str());
+    map <string, string> configs = mCpuConfig[cup_set];
     for (auto &&config : configs) {
-        LOGD("cpu = %s , value = %s\n", config.first.c_str(), config.second.c_str());
+        LOGI("cpu = %s , value = %s\n", config.first.c_str(), config.second.c_str());
         //TODO
+        //set cpu from config
     }
 
     return true;
@@ -66,44 +70,27 @@ bool CpuPolicyAgent::loadConfig() {
     return true;
 }
 
+void CpuPolicyAgent::initMap() {
+    mAppType.insert({APP_DEFAULT, CPU_SET_APP_DEFAULT});
 
-string CpuPolicyAgent::convertApp(int app) {
-    string appStr = CPU_SET_DEFAULT_APP;
-    switch (app) {
-        case SCENE_FACTOR_APP_DEFAULT:
-            appStr = CPU_SET_DEFAULT_APP;
-            break;
-        case SCENE_FACTOR_APP_ALBUM:
-            //TODO
-            appStr = CPU_SET_SPECIAL_APP;
-            break;
-        case SCENE_FACTOR_APP_BROWSER:
-            //TODO
-            appStr = CPU_SET_DEFAULT_APP;
-            break;
-        case SCENE_FACTOR_APP_GAME:
-            appStr = CPU_SET_DEFAULT_GAME;
-            break;
-        case SCENE_FACTOR_APP_IM:
-            //TODO
-            appStr = CPU_SET_TOP_APP;
-            break;
-        case SCENE_FACTOR_APP_MUSIC:
-            //TODO
-            appStr = CPU_SET_DEFAULT_APP;
-            break;
-        case SCENE_FACTOR_APP_NEWS:
-            //TODO
-            appStr = CPU_SET_SPECIAL_APP;
-            break;
-        case SCENE_FACTOR_APP_READER:
-            //TODO
-            appStr = CPU_SET_SPECIAL_APP;
-            break;
-        case SCENE_FACTOR_APP_VIDEO:
-            //TODO
-            appStr = CPU_SET_GAME_RECORDING;
-            break;
-    }
-    return appStr;
+    mAppType.insert({APP_ALBUM, CPU_SET_APP_ALBUM});
+
+    mAppType.insert({APP_GAME, CPU_SET_APP_GAME});
+
+    mAppType.insert({APP_BENCHMARK, CPU_SET_APP_BENCHMARK});
+
+    mAppType.insert({APP_VIDEO, CPU_SET_APP_VIDEO});
+    mAppType.insert({APP_LIVE, CPU_SET_APP_VIDEO});
+
+    mAppType.insert({APP_IM, CPU_SET_APP_IM});
+    mAppType.insert({APP_MUSIC, CPU_SET_APP_IM});
+
+    mAppType.insert({APP_NEWS, CPU_SET_APP_NEWS});
+    mAppType.insert({APP_READER, CPU_SET_APP_NEWS});
+    mAppType.insert({APP_BROWSER, CPU_SET_APP_NEWS});
+    mAppType.insert({APP_WEIBO, CPU_SET_APP_NEWS});
+    mAppType.insert({APP_SHOP, CPU_SET_APP_NEWS});
+
+    mAppType.insert({APP_LAUNCHER, CPU_SET_APP_LAUNCHER});
+    mAppType.insert({APP_NAVIGATION, CPU_SET_APP_LAUNCHER});
 }

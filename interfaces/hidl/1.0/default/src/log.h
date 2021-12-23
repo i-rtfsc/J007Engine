@@ -19,7 +19,7 @@
 
 #include <log/log.h>
 
-#define DEBUG false
+#define DEBUG true
 
 #undef  LOG_TAG
 #define LOG_TAG        "J007Engine"

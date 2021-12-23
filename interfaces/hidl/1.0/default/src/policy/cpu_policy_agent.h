@@ -18,30 +18,22 @@
 #ifndef _CPU_POLICY_AGENT_H
 #define _CPU_POLICY_AGENT_H
 
-#define CPU_SET_DEFAULT_APP             "default_app"
-#define CPU_SET_SPECIAL_APP             "special_app"
-#define CPU_SET_TOP_APP                 "top_app"
-#define CPU_SET_DEFAULT_GAME            "default_game"
-#define CPU_SET_GAME_8                  "default_game_8"
-#define CPU_SET_GAME_7                  "default_game_7"
-#define CPU_SET_GAME_4                  "default_game_4"
-#define CPU_SET_GAME_RECORDING          "game_recording"
-#define CPU_SET_BENCHMARK               "benchmark"
+#define CPU_SET_APP_DEFAULT             "default"
+#define CPU_SET_APP_ALBUM               "album"
+#define CPU_SET_APP_GAME                "game"
+#define CPU_SET_APP_BENCHMARK            "benchmark"
+#define CPU_SET_APP_VIDEO               "video"
+#define CPU_SET_APP_IM                  "im"
+#define CPU_SET_APP_NEWS                "news"
+#define CPU_SET_APP_LAUNCHER            "launcher"
 
 #include <string>
 #include <map>
 
 #include "policy_agent.h"
+#include "../global_scene.h"
 
 using namespace std;
-
-
-//struct CpuConfig {
-//    string name;
-//    string description;
-//    map <string, string> config;
-//    vector <CpuConfig> cc;
-//};
 
 class CpuPolicyAgent : public PolicyAgent {
 public:
@@ -49,15 +41,16 @@ public:
 
     virtual ~CpuPolicyAgent();
 
-    bool onAppSwitch(int app, string status, string packageName) override;
+    bool onAppSwitch(App app, string status, string packageName) override;
 
 protected:
     bool loadConfig() override;
-    string convertApp(int app) override;
 
 private:
+    void initMap();
+
     map <string, map<string, string>> mCpuConfig;
-    //CpuConfig mCpuConfig;
+    map <string, string> mAppType;
 };
 
 

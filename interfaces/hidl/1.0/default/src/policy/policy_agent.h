@@ -22,6 +22,8 @@
 
 #include <string>
 
+#include "../global_scene.h"
+
 using namespace std;
 
 class PolicyAgent {
@@ -30,17 +32,13 @@ public:
 
     virtual ~PolicyAgent();
 
-    virtual bool onAppSwitch(int app, string status, string packageName) {
+    virtual bool onAppSwitch(App app, string status, string packageName) {
         return true;
     }
 
 protected:
     virtual bool loadConfig() {
         return true;
-    }
-
-    virtual string convertApp(int app) {
-        return "";
     }
 };
 
