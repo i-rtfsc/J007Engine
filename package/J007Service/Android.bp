@@ -55,6 +55,8 @@ cc_library_shared {
         "libandroid",
         "liblog",
     ],
+	// for including the jni.h file
+	header_libs: ["jni_headers"],
     cflags: [
         "-Wall",
         "-Werror",

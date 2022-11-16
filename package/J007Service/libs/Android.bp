@@ -1,0 +1,6 @@
+java_import {
+    name: "gson-prebuilt-jar",
+    jars: ["gson-2.8.0.jar"],
+    sdk_version: "current",
+    host_supported: true,
+}
