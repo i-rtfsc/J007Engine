@@ -53,6 +53,7 @@
 
         <activity
             android:name=".DebugActivity"
+            android:exported="true"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="com.journeyOS.J007engine.action.DEBUG" />
@@ -84,7 +85,9 @@
                 android:resource="@xml/accessibility" />
         </service>
 
-        <receiver android:name=".receiver.BootReceiver">
+        <receiver
+            android:name=".receiver.BootReceiver"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <category android:name="android.intent.category.HOME" />
